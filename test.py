@@ -255,7 +255,7 @@ def approx_is_square(approx, SIDE_VS_SIDE_THRESHOLD=0.60, ANGLE_THRESHOLD=20, RO
     return True
 
 
-def square_width_height(approx):
+def crop_cube(approx):
     """
     This assumes that approx is a square. Return the width and height of the square.
     """
@@ -304,7 +304,7 @@ for cnt in contours:
     approx = cv2.approxPolyDP(cnt,0.1*cv2.arcLength(cnt,True),True)
     y=approx_is_square(approx, SIDE_VS_SIDE_THRESHOLD=0.60, ANGLE_THRESHOLD=20, ROTATE_THRESHOLD=30)
     if(y==True):
-        square_width_height(approx)
+        crop_cube(approx)
         cv2.imshow("image",img)
         
 cv2.waitKey(0)
